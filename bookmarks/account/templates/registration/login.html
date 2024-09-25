@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Iniciar Sesion{% endblock %}
+
+{% block content %}
+  <h1>Iniciar Sesión</h1>
+  {% if form.errors %}
+    <p>
+      Tu usuario y contraseña no coiciden.
+      Por favor, intentalo de nuevo.
+    </p>
+  {% else %}
+    <p>
+      Por favor, utiliza el siguiente formulario para iniciar sesión.
+      Si no tienes una cuenta <a href="{% url "register" %}"> registrate aquí</a>.
+    </p>
+  {% endif %}
+  <div class="login-form">
+    <form action="{% url 'login' %}" method="post">
+      {{ form.as_p }}
+      {% csrf_token %}
+      <input type="hidden" name="next" value="{{ next }}" />
+      <p><input type="submit" value="Iniciar Sesión"></p>
+    </form>
+    <p>
+      <a href="{% url "password_reset" %}">
+        ¿Olvidaste tu contraseña?
+      </a>
+    </p>
+  </div>
+  <div class="social">
+    <ul>
+      <li class="facebook">
+        <a href="{% url "social:begin" "facebook" %}">
+          Ingresa con Facebook
+        </a>
+      </li>
+      <li class="google">
+        <a href="{% url "social:begin" "google-oauth2" %}">
+          Ingresa con Google
+        </a>
+      </li>
+    </ul>
+  </div>
+{% endblock %}

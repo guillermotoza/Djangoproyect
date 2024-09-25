@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %} Cerrar Sesion{% endblock %}
+{% block content %}
+  <h1>Cerrar Sesion</h1>
+  <p>
+    Has cerrado sesión satisfactoriamente.
+    Quieres <a href="{% url "login" %}">Iniciar Sesion de nuevo?</a>.
+  </p>
+{% endblock %}
