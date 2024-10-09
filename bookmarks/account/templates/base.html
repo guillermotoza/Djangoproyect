@@ -24,9 +24,9 @@
     <span class="user">
       {% if request.user.is_authenticated %}
         Hola! {{ request.user.first_name|default:request.user.username }},
-        <a href="{% url "logout" %}">Cerrar Sesion</a>
+        <a href="{% url "logout" %}">Cerrar Sesión</a>
       {% else %}
-        <a href="{% url "login" %}">Iniciar Sesion</a>
+        <a href="{% url "login" %}">Iniciar Sesión</a>
       {% endif %}
     </span>
   </div>
